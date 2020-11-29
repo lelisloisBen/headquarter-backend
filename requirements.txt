@@ -2,4 +2,4 @@ Flask
 gunicorn
 Flask-Cors
 flask-sqlalchemy
-python-mysqldb
+Flask-MySQLdb
