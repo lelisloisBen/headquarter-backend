@@ -6,6 +6,7 @@ import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('JAWSDB_URL')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 CORS(app)
 
 # Handle/serialize errors like a JSON object
