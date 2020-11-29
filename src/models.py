@@ -20,8 +20,8 @@ class Consultants(db.Model):
     routing = db.Column(db.String(120))
     account = db.Column(db.String(120))
 
-    def __repr__(self):
-        return '<Consultants %r>' % self.firstname
+    # def __repr__(self):
+    #     return '<Consultants %r>' % self.firstname
 
     def serialize(self):
         return {
