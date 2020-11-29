@@ -14,6 +14,9 @@ def handle_invalid_usage(error):
 def hello_world():
     return "<div style='text-align: center; background-color: orange'><h1>Backend running...</h1><br/><h3>Welcome back samir</h3><img src='https://media.gettyimages.com/photos/woman-sitting-by-washing-machine-picture-id117852649?s=2048x2048' width='80%' /></div>"
 
+@app.route('/add-consultant')
+def new_consultant():
+    return 'hello'
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
