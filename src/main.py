@@ -29,9 +29,37 @@ def handle_consultant():
 
     return "Invalid Method", 404
 
-@app.route('/add-consultant')
+@app.route('/add-consultant', methods=['POST'])
 def new_consultant():
-    return 'hello'
+    
+    if request.method == 'POST':
+        body = request.get_json()
+        db.session.add(Consultants(
+            firstname = body['firstname'],
+            lastname = body['lastname'],
+            birthdate = body['birthdate'],
+            gender = body['gender'],
+            address = body['address'],
+            city = body['city'],
+            state = body['state'],
+            zipCode = body['zipCode'],
+            emailPerso = body['emailPerso'],
+            emailWork = body['emailWork'],
+            phone = body['phone'],
+            skype = body['skype'],
+            bankName = body['bankName'],
+            routing = body['routing'],
+            account = body['account']
+        ))
+
+        db.session.commit()
+        return jsonify({
+            'created': 'success',
+            'msg': 'Successfully Added'
+        })
+
+    return "Invalid Method", 404
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
