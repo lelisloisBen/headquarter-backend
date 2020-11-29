@@ -4,7 +4,7 @@ from utils import APIException
 from models import db, Consultants
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_CONNECTION_STRING')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('JAWSDB_URL')
 CORS(app)
 
 # Handle/serialize errors like a JSON object
