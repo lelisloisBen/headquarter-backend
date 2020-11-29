@@ -1,0 +1,19 @@
+create table Consultants(
+   id INT NOT NULL AUTO_INCREMENT,
+   firstname VARCHAR(120),
+   lastname VARCHAR(120),
+   birthdate VARCHAR(120),
+   gender VARCHAR(120),
+   address VARCHAR(120),
+   city VARCHAR(120),
+   state VARCHAR(120),
+   zipCode VARCHAR(120),
+   emailPerso VARCHAR(120),
+   emailWork VARCHAR(120),
+   phone VARCHAR(120),
+   skype VARCHAR(120),
+   bankName VARCHAR(120),
+   routing VARCHAR(120),
+   account VARCHAR(120),
+   PRIMARY KEY ( id )
+);
