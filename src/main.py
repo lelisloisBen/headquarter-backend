@@ -32,9 +32,9 @@ def handle_consultant():
 
     return "Invalid Method", 404
 
-@APP.route('/consultant/<int:c_id>', methods=['PUT', 'GET'])
-def get_single_consultant(c_id):
-    
+@APP.route('/consultant/<int:id>', methods=['PUT', 'GET'])
+def get_single_consultant(id):
+
     body = request.get_json() #{ 'username': 'new_username'}
 
     if request.method == 'PUT':
