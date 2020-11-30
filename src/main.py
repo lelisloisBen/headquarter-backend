@@ -46,7 +46,7 @@ def handle_login():
         else:
             TheLoginToken = create_jwt(identity=1)
 
-            saveToken = logintokens.query.get(id=1)
+            saveToken = logintokens.query.filter_by(id=1).first()
             saveToken.token = TheLoginToken
             db.session.commit()
 
