@@ -2,7 +2,11 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from utils import APIException
 from models import db, Consultants
+from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
+
+loginEmail = os.environ.get('LOGIN_EMAIL')
+loginPassword = os.environ.get('LOGIN_PASSWORD')
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('JAWSDB_URL')
@@ -18,6 +22,20 @@ def handle_invalid_usage(error):
 @app.route('/')
 def hello_world():
     return "<div style='text-align: center; background-color: orange'><h1>Backend running...</h1><br/><h3>Welcome back samir</h3><img src='https://media.gettyimages.com/photos/woman-sitting-by-washing-machine-picture-id117852649?s=2048x2048' width='80%' /></div>"
+
+@app.route('/login', methods=['POST'])
+def handle_login():
+    body = request.get_json()
+
+    if body['email'] = loginEmail & body['password'] = loginPassword:
+
+        return jsonify({
+              'token': create_jwt(identity=1),
+              'email': body['email'],
+              'name': "admin"
+              })
+    return "Invalid Method", 404
+
 
 @app.route('/consultant', methods=['GET'])
 def handle_consultant():
