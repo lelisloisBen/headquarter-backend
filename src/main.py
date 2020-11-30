@@ -32,6 +32,23 @@ def handle_consultant():
 
     return "Invalid Method", 404
 
+@APP.route('/consultant/<int:c_id>', methods=['PUT', 'GET'])
+def get_single_consultant(c_id):
+    
+    body = request.get_json() #{ 'username': 'new_username'}
+
+    if request.method == 'PUT':
+        user1 = Consultants.query.get(id)
+        user1.firstname = body.firstname
+        db.session.commit()
+        return jsonify(user1.serialize()), 200
+
+    if request.method == 'GET':
+        user1 = Consultants.query.get(id)
+        return jsonify(user1.serialize()), 200
+
+    return "Invalid Method", 404
+
 @app.route('/add-consultant', methods=['POST'])
 def new_consultant():
     
