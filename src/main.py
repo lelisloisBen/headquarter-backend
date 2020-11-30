@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from utils import APIException
-from models import db, Consultants, logintoken
+from models import db, Consultants, logintokens
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 
@@ -46,7 +46,7 @@ def handle_login():
         else:
             TheLoginToken = create_jwt(identity=1)
 
-            saveToken = logintoken.query.get(id=1)
+            saveToken = logintokens.query.get(id=1)
             saveToken.token = TheLoginToken
             db.session.commit()
 

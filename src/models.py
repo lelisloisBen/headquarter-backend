@@ -2,12 +2,12 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class logintoken(db.Model):
+class logintokens(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     token = db.Column(db.Text, nullable=False)
 
     def __repr__(self):
-        return '<logintoken %r>' % self.token
+        return '<logintokens %r>' % self.token
 
     def serialize(self):
         return {
