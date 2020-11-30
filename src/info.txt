@@ -17,3 +17,9 @@ create table Consultants(
    account VARCHAR(120),
    PRIMARY KEY ( id )
 );
+
+create table logintokens(
+   id INT NOT NULL AUTO_INCREMENT,
+   token TEXT NOT NULL,
+   PRIMARY KEY ( id )
+);

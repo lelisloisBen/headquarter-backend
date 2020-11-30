@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from utils import APIException
-from models import db, Consultants
+from models import db, Consultants, logintoken
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 
@@ -44,10 +44,14 @@ def handle_login():
                 'msg': 'wrong password'
                 })
         else:
-            LoginToken = create_jwt(identity=1)
-            
+            TheLoginToken = create_jwt(identity=1)
+
+            saveToken = logintoken.query.get(id=1)
+            saveToken.token = TheLoginToken
+            db.session.commit()
+
             return jsonify({
-                'token': LoginToken,
+                'token': TheLoginToken,
                 'email': body['email'],
                 'name': "admin"
                 })

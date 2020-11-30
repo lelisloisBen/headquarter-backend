@@ -2,6 +2,19 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+class logintoken(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    token = db.Column(db.Text, nullable=False)
+
+    def __repr__(self):
+        return '<logintoken %r>' % self.token
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "token": self.token
+        }
+
 class Consultants(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(120))
