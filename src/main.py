@@ -58,6 +58,11 @@ def handle_login():
 
     return "Invalid Method", 404
 
+@app.route('/checkToken', methods=['GET'])
+def check_token():
+    if request.method == 'GET':
+        CheckToken = logintokens.query.filter_by(id=1).first()
+        return jsonify(CheckToken.serialize()), 200 
 
 @app.route('/consultant', methods=['GET'])
 def handle_consultant():
