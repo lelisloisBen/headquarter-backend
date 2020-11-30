@@ -27,25 +27,25 @@ def hello_world():
 def handle_login():
     body = request.get_json()
 
-        if !body:
-            if body['email'] != loginEmail:
+    if !body:
+        if body['email'] != loginEmail:
+            return jsonify({
+                'msg': 'wrong email'
+                })
+        elif body['password'] != loginPassword:
                 return jsonify({
-                    'msg': 'wrong email'
-                    })
-            elif body['password'] != loginPassword:
-                    return jsonify({
-                    'msg': 'wrong password'
-                    })
-            else:
-                return jsonify({
-                    'token': create_jwt(identity=1),
-                    'email': body['email'],
-                    'name': "admin"
-                    })
+                'msg': 'wrong password'
+                })
         else:
             return jsonify({
-                    'msg': 'login cannot be empty'
-                    })
+                'token': create_jwt(identity=1),
+                'email': body['email'],
+                'name': "admin"
+                })
+    else:
+        return jsonify({
+                'msg': 'login cannot be empty'
+                })
 
     return "Invalid Method", 404
 
