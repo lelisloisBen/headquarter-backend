@@ -44,8 +44,10 @@ def handle_login():
                 'msg': 'wrong password'
                 })
         else:
+            LoginToken = create_jwt(identity=1)
+            
             return jsonify({
-                'token': create_jwt(identity=1),
+                'token': LoginToken,
                 'email': body['email'],
                 'name': "admin"
                 })
