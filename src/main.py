@@ -28,6 +28,10 @@ def handle_login():
     body = request.get_json()
 
     if body is None:
+        return jsonify({
+                'msg': 'login cannot be empty'
+                })
+    else:
         if body['email'] != loginEmail:
             return jsonify({
                 'msg': 'wrong email'
@@ -41,10 +45,6 @@ def handle_login():
                 'token': create_jwt(identity=1),
                 'email': body['email'],
                 'name': "admin"
-                })
-    else:
-        return jsonify({
-                'msg': 'login cannot be empty'
                 })
 
     return "Invalid Method", 404
