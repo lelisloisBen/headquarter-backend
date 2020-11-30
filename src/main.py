@@ -27,7 +27,7 @@ def hello_world():
 def handle_login():
     body = request.get_json()
 
-    if body None:
+    if body is None:
         if body['email'] != loginEmail:
             return jsonify({
                 'msg': 'wrong email'
