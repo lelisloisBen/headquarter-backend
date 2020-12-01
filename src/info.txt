@@ -26,29 +26,29 @@ create table logintokens(
 
 create table iterviews(
    id INT NOT NULL AUTO_INCREMENT,
-   firstname
-   lastname
-   email
-   time
-   client
-   vendor
-   implementationpartner
-   mode
-   type
-   assist1
-   assist2
-   saleassociate
-   manager
-   livecoding
-   positiontitle
-   jobdescription 
-   projectduration
-   projectlocation
-   clientwebsite
-   vendorwebsite
-   interviewername
-   interviewerlinkedIn
-   vendornotes
+   firstname VARCHAR(120),
+   lastname VARCHAR(120),
+   email VARCHAR(120),
+   time VARCHAR(120),
+   client VARCHAR(120),
+   vendor VARCHAR(120),
+   implementationpartner VARCHAR(120),
+   mode VARCHAR(120),
+   type VARCHAR(120),
+   assist1 VARCHAR(120),
+   assist2 VARCHAR(120),
+   saleassociate VARCHAR(120),
+   manager VARCHAR(120),
+   livecoding VARCHAR(120),
+   positiontitle VARCHAR(120),
+   jobdescription TEXT NOT NULL,
+   projectduration VARCHAR(120),
+   projectlocation VARCHAR(120),
+   clientwebsite VARCHAR(120),
+   vendorwebsite VARCHAR(120),
+   interviewername VARCHAR(120),
+   interviewerlinkedIn VARCHAR(120),
+   vendornotes VARCHAR(120),
    PRIMARY KEY ( id )
 )
 
