@@ -50,7 +50,7 @@ create table iterviews(
    interviewerlinkedIn VARCHAR(120),
    vendornotes VARCHAR(120),
    PRIMARY KEY ( id )
-)
+);
 
  "c_firstname": c_ConsultantFirstName,
         "c_lastname": c_ConsultantLastName,
