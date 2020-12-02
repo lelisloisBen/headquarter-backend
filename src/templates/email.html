@@ -10,13 +10,14 @@
     <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
         <tr>
             <td align="center" valign="top">
-                <table border="0" cellpadding="0" cellspacing="0" width="90%" id="emailContainer">
+                <table border="0" cellpadding="0" cellspacing="0" width="95%" id="emailContainer">
                     <tr>
                         <td align="left" valign="top">
                             <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="center" valign="top">
-                                        <h1>Interview: {{ firstname }} {{ lastname }}, {{ client }}/{{ vendor }}</h1>
+                                        <h1>NEW INTERVIEW </h1>
+                                        <h2>{{ firstname }} {{ lastname }} VS {{ client }}/{{ vendor }}</h2>
                                     </td>
                                 </tr>
                             </table>
@@ -27,7 +28,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Consultant: {{ firstname }} {{ lastname }}
+                                        Consultant: <b>{{ firstname }} {{ lastname }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -38,7 +39,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Time: {{ time }}
+                                        Time: <b>{{ time }}</b> 
                                     </td>
                                 </tr>
                             </table>
@@ -49,7 +50,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        client: {{ client }}
+                                        client: <b>{{ client }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -60,7 +61,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Vendor: {{ vendor }}
+                                        Vendor: <b>{{ vendor }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -71,7 +72,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Implementation Partner: {{ implementationpartner }}
+                                        Implementation Partner: <b>{{ implementationpartner }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -82,7 +83,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Mode (Inbound or Outbound): {{ mode }}
+                                        Mode: <b>{{ mode }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -93,7 +94,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Call Type: {{ calltype }}
+                                        Call Type: <b>{{ calltype }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -104,7 +105,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        First Technical Assistant: {{ assist1 }}
+                                        Tech Assist 1: <b>{{ assist1 }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -115,7 +116,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Second Technical Assistant: {{ assist2 }}
+                                        Technical Assist 2: <b>{{ assist2 }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -126,7 +127,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Sale Associate: {{ saleassociate }}
+                                        Sale Associate: <b>{{ saleassociate }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -137,7 +138,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Manager: {{ manager }}
+                                        Manager: <b>{{ manager }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -148,7 +149,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Live Coding: {{ livecoding }}
+                                        Live Coding: <b>{{ livecoding }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -159,7 +160,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Position Title: {{ positiontitle }}
+                                        Position Title: <b>{{ positiontitle }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -184,7 +185,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Project Duration: {{ projectduration }}
+                                        Project Duration: <b>{{ projectduration }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -195,7 +196,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Project Location: {{ projectlocation }}
+                                        Project Location: <b>{{ projectlocation }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -206,7 +207,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Client Website: {{ clientwebsite }}
+                                        Client Website: <b>{{ clientwebsite }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -217,7 +218,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Vendor Website: {{ vendorwebsite }}
+                                        Vendor Website: <b>{{ vendorwebsite }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -228,7 +229,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Interviewer Name: {{ interviewername }}
+                                        Interviewer Name: <b>{{ interviewername }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -239,7 +240,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Interviewer LinkedIn: {{ interviewerlinkedIn }}
+                                        Interviewer LinkedIn: <b>{{ interviewerlinkedIn }}</b>
                                     </td>
                                 </tr>
                             </table>
@@ -250,7 +251,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Vendor Notes: {{ vendornotes }}
+                                        Vendor Notes: <b>{{ vendornotes }}</b>
                                     </td>
                                 </tr>
                             </table>
