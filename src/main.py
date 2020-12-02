@@ -133,7 +133,7 @@ def new_interview():
     if request.method == 'POST':
         body = request.get_json()
 
-         msg = Message(
+        msg = Message(
             'Interview',
             sender='headquarter@datavault.com',
             recipients=['samirbenzada@gmail.com'],
