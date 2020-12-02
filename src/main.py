@@ -4,17 +4,19 @@ from utils import APIException
 from models import db, Consultants, logintokens, interviews
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
+from flask_mail import Mail, Message
 
-loginEmail = os.environ.get('LOGIN_EMAIL')
-loginPassword = os.environ.get('LOGIN_PASSWORD')
+# loginEmail = os.environ.get('LOGIN_EMAIL')
+# loginPassword = os.environ.get('LOGIN_PASSWORD')
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('JAWSDB_URL')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config.from_object("config")
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('JAWSDB_URL')
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 CORS(app)
 
-app.config['JWT_SECRET_KEY'] = 'dfsh3289349yhoelqwru9g'
+# app.config['JWT_SECRET_KEY'] = 'dfsh3289349yhoelqwru9g'
 jwt = JWTManager(app)
 
 # Handle/serialize errors like a JSON object
@@ -164,7 +166,7 @@ def new_interview():
         })
 
     return "Invalid Method", 404
-    
+
 @app.route('/interviews', methods=['GET'])
 def list_interviews():
 
