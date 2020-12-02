@@ -142,34 +142,34 @@ def new_interview():
 
         mail.send(msg)
 
-        db.session.add(interviews(
-            firstname = body['c_firstname'],
-            lastname = body['c_lastname'],
-            email = body['c_email'],
-            time = body['Time'],
-            client = body['Client'],
-            vendor = body['Vendor'],
-            implementationpartner = body['ImplementationPartner'],
-            mode = body['Mode'],
-            calltype = body['Type'],
-            assist1 = body['assist1'],
-            assist2 = body['assist2'],
-            saleassociate = body['SA'],
-            manager = body['Manager'],
-            livecoding = body['LiveCoding'],
-            positiontitle = body['PositionTitle'],
-            jobdescription = body['JD'],
-            projectduration = body['ProjectDuration'],
-            projectlocation = body['ProjectLocation'],
-            clientwebsite = body['ClientWebsite'],
-            vendorwebsite = body['VendorWebsite'],
-            interviewername = body['InterviewerName'],
-            interviewerlinkedIn = body['InterviewerLinkedIn'],
-            vendornotes = body['VendorNotes']
+        # db.session.add(interviews(
+        #     firstname = body['c_firstname'],
+        #     lastname = body['c_lastname'],
+        #     email = body['c_email'],
+        #     time = body['Time'],
+        #     client = body['Client'],
+        #     vendor = body['Vendor'],
+        #     implementationpartner = body['ImplementationPartner'],
+        #     mode = body['Mode'],
+        #     calltype = body['Type'],
+        #     assist1 = body['assist1'],
+        #     assist2 = body['assist2'],
+        #     saleassociate = body['SA'],
+        #     manager = body['Manager'],
+        #     livecoding = body['LiveCoding'],
+        #     positiontitle = body['PositionTitle'],
+        #     jobdescription = body['JD'],
+        #     projectduration = body['ProjectDuration'],
+        #     projectlocation = body['ProjectLocation'],
+        #     clientwebsite = body['ClientWebsite'],
+        #     vendorwebsite = body['VendorWebsite'],
+        #     interviewername = body['InterviewerName'],
+        #     interviewerlinkedIn = body['InterviewerLinkedIn'],
+        #     vendornotes = body['VendorNotes']
             
-        ))
+        # ))
 
-        db.session.commit()
+        # db.session.commit()
         return jsonify({
             'created': 'success',
             'msg': 'Successfully Saved and Email sent'
