@@ -125,6 +125,47 @@ def new_consultant():
 
     return "Invalid Method", 404
 
+@app.route('/newInterview', methods=['POST'])
+def new_interview():
+
+    if request.method == 'POST':
+        body = request.get_json()
+        db.session.add(iterviews(
+            firstname = body['c_firstname'],
+            lastname = body['c_lastname'],
+            email = body['c_email'],
+            time = body['Time'],
+            client = body['Client'],
+            vendor = body['Vendor'],
+            implementationpartner = body['ImplementationPartner'],
+            mode = body['Mode'],
+            calltype = body['Type'],
+            assist1 = body['assist1'],
+            assist2 = body['assist2'],
+            saleassociate = body['SA'],
+            manager = body['Manager'],
+            livecoding = body['LiveCoding'],
+            positiontitle = body['PositionTitle'],
+            jobdescription = body['JD'],
+            projectduration = body['ProjectDuration'],
+            projectlocation = body['ProjectLocation'],
+            clientwebsite = body['ClientWebsite'],
+            vendorwebsite = body['VendorWebsite'],
+            interviewername = body['InterviewerName'],
+            interviewerlinkedIn = body['InterviewerLinkedIn'],
+            vendornotes = body['VendorNotes']
+            
+        ))
+
+        db.session.commit()
+        return jsonify({
+            'created': 'success',
+            'msg': 'Successfully Saved and Email sent'
+        })
+
+    return "Invalid Method", 404
+
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
