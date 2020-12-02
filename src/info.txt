@@ -34,7 +34,7 @@ create table iterviews(
    vendor VARCHAR(120),
    implementationpartner VARCHAR(120),
    mode VARCHAR(120),
-   type VARCHAR(120),
+   calltype VARCHAR(120),
    assist1 VARCHAR(120),
    assist2 VARCHAR(120),
    saleassociate VARCHAR(120),

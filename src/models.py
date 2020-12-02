@@ -55,3 +55,60 @@ class Consultants(db.Model):
             "routing": self.routing,
             "account": self.account
         }
+
+class iterviews(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    firstname = db.Column(db.String(120), nullable=False)
+    lastname = db.Column(db.String(120), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    time = db.Column(db.String(120))
+    client = db.Column(db.String(120))
+    vendor = db.Column(db.String(120))
+    implementationpartner = db.Column(db.String(120))
+    mode = db.Column(db.String(120))
+    calltype = db.Column(db.String(120))
+    assist1 = db.Column(db.String(120))
+    assist2 = db.Column(db.String(120))
+    saleassociate = db.Column(db.String(120))
+    manager = db.Column(db.String(120))
+    livecoding = db.Column(db.String(120))
+    positiontitle = db.Column(db.String(120))
+    jobdescription = db.Column(db.Text, nullable=False)
+    projectduration = db.Column(db.String(120))
+    projectlocation = db.Column(db.String(120))
+    clientwebsite = db.Column(db.String(120))
+    vendorwebsite = db.Column(db.String(120))
+    interviewername = db.Column(db.String(120))
+    interviewerlinkedIn = db.Column(db.String(120))
+    vendornotes = db.Column(db.String(120))
+
+    def __repr__(self):
+        return '<iterviews %r>' % self.firstname
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "firstname": self.firstname,
+            "lastname": self.lastname,
+            "email": self.email,
+            "time": self.time,
+            "client": self.client,
+            "vendor": self.vendor,
+            "implementationpartner": self.implementationpartner,
+            "mode": self.mode,
+            "calltype": self.calltype,
+            "assist1": self.assist1,
+            "assist2": self.assist2,
+            "saleassociate": self.saleassociate,
+            "manager": self.manager,
+            "livecoding": self.livecoding,
+            "positiontitle": self.positiontitle,
+            "jobdescription": self.jobdescription,
+            "projectduration": self.projectduration,
+            "projectlocation": self.projectlocation,
+            "clientwebsite": self.clientwebsite,
+            "vendorwebsite": self.vendorwebsite,
+            "interviewername": self.interviewername,
+            "interviewerlinkedIn": self.interviewerlinkedIn,
+            "vendornotes": self.vendornotes
+        }
