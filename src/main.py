@@ -133,37 +133,38 @@ def new_consultant():
 def new_interview():
 
     if request.method == 'POST':
-        body = request.get_json()
+        form_body = request.get_json()
 
         msg = Message(
             'Interview',
             sender='headquarter@datavault.com',
             recipients=['samirbenzada@gmail.com'],
-            body=render_template(
+            html=render_template(
                 "email.html", 
-                firstname=body['c_firstname'], 
-                lastname=body['c_lastname'], 
-                time=body['Time'],
-                client = body['Client'],
-                vendor = body['Vendor'],
-                implementationpartner = body['ImplementationPartner'],
-                mode = body['Mode'],
-                calltype = body['Type'],
-                assist1 = body['assist1'],
-                assist2 = body['assist2'],
-                saleassociate = body['SA'],
-                manager = body['Manager'],
-                livecoding = body['LiveCoding'],
-                positiontitle = body['PositionTitle'],
-                jobdescription = body['JD'],
-                projectduration = body['ProjectDuration'],
-                projectlocation = body['ProjectLocation'],
-                clientwebsite = body['ClientWebsite'],
-                vendorwebsite = body['VendorWebsite'],
-                interviewername = body['InterviewerName'],
-                interviewerlinkedIn = body['InterviewerLinkedIn'],
-                vendornotes = body['VendorNotes']
+                firstname=form_body['c_firstname'], 
+                lastname=form_body['c_lastname'], 
+                time=form_body['Time'],
+                client = form_body['Client'],
+                vendor = form_body['Vendor'],
+                implementationpartner = form_body['ImplementationPartner'],
+                mode = form_body['Mode'],
+                calltype = form_body['Type'],
+                assist1 = form_body['assist1'],
+                assist2 = form_body['assist2'],
+                saleassociate = form_body['SA'],
+                manager = form_body['Manager'],
+                livecoding = form_body['LiveCoding'],
+                positiontitle = form_body['PositionTitle'],
+                jobdescription = form_body['JD'],
+                projectduration = form_body['ProjectDuration'],
+                projectlocation = form_body['ProjectLocation'],
+                clientwebsite = form_body['ClientWebsite'],
+                vendorwebsite = form_body['VendorWebsite'],
+                interviewername = form_body['InterviewerName'],
+                interviewerlinkedIn = form_body['InterviewerLinkedIn'],
+                vendornotes = form_body['VendorNotes']
                 )
+            # html=body
             # body="Hello " + body['c_firstname'] + ", here your interview for " + body['Time'] + " thank you."
         )
 
