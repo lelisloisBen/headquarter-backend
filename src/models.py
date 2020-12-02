@@ -56,7 +56,7 @@ class Consultants(db.Model):
             "account": self.account
         }
 
-class iterviews(db.Model):
+class interviews(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(120), nullable=False)
     lastname = db.Column(db.String(120), nullable=False)
@@ -83,7 +83,7 @@ class iterviews(db.Model):
     vendornotes = db.Column(db.String(120))
 
     def __repr__(self):
-        return '<iterviews %r>' % self.firstname
+        return '<interviews %r>' % self.firstname
 
     def serialize(self):
         return {

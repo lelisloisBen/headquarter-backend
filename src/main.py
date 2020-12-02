@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from utils import APIException
-from models import db, Consultants, logintokens
+from models import db, Consultants, logintokens, interviews
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 
@@ -130,7 +130,7 @@ def new_interview():
 
     if request.method == 'POST':
         body = request.get_json()
-        db.session.add(iterviews(
+        db.session.add(interviews(
             firstname = body['c_firstname'],
             lastname = body['c_lastname'],
             email = body['c_email'],
