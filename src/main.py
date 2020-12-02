@@ -164,6 +164,19 @@ def new_interview():
         })
 
     return "Invalid Method", 404
+    
+@app.route('/interviews', methods=['GET'])
+def list_interviews():
+
+    if request.method == 'GET':
+        allInterviews = interviews.query.all()
+
+        if not allInterviews:
+            return jsonify({'msg':'User not found'}), 404
+
+        return jsonify( [x.serialize() for x in allInterviews] ), 200
+
+    return "Invalid Method", 404
 
 
 
