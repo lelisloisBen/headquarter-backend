@@ -19,6 +19,8 @@ CORS(app)
 # app.config['JWT_SECRET_KEY'] = 'dfsh3289349yhoelqwru9g'
 jwt = JWTManager(app)
 
+mail = Mail(app)
+
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
 def handle_invalid_usage(error):
