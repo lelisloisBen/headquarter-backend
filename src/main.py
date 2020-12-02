@@ -132,6 +132,16 @@ def new_interview():
 
     if request.method == 'POST':
         body = request.get_json()
+
+         msg = Message(
+            'Interview',
+            sender='headquarter@datavault.com',
+            recipients=['samirbenzada@gmail.com'],
+            body="Hello " + body['c_firstname'] + ", here your interview for " + body['Time'] + " thank you."
+        )
+
+        mail.send(msg)
+
         db.session.add(interviews(
             firstname = body['c_firstname'],
             lastname = body['c_lastname'],
