@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from utils import APIException
 from models import db, Consultants, logintokens, interviews
@@ -139,7 +139,32 @@ def new_interview():
             'Interview',
             sender='headquarter@datavault.com',
             recipients=['samirbenzada@gmail.com'],
-            body="Hello " + body['c_firstname'] + ", here your interview for " + body['Time'] + " thank you."
+            body=render_template(
+                "email.html", 
+                firstname=body['c_firstname'], 
+                lastname=body['c_lastname'], 
+                time=body['Time'],
+                client = body['Client'],
+                vendor = body['Vendor'],
+                implementationpartner = body['ImplementationPartner'],
+                mode = body['Mode'],
+                calltype = body['Type'],
+                assist1 = body['assist1'],
+                assist2 = body['assist2'],
+                saleassociate = body['SA'],
+                manager = body['Manager'],
+                livecoding = body['LiveCoding'],
+                positiontitle = body['PositionTitle'],
+                jobdescription = body['JD'],
+                projectduration = body['ProjectDuration'],
+                projectlocation = body['ProjectLocation'],
+                clientwebsite = body['ClientWebsite'],
+                vendorwebsite = body['VendorWebsite'],
+                interviewername = body['InterviewerName'],
+                interviewerlinkedIn = body['InterviewerLinkedIn'],
+                vendornotes = body['VendorNotes']
+                )
+            # body="Hello " + body['c_firstname'] + ", here your interview for " + body['Time'] + " thank you."
         )
 
         mail.send(msg)
