@@ -1,3 +1,5 @@
+import os
+
 loginEmail = os.environ.get('LOGIN_EMAIL')
 loginPassword = os.environ.get('LOGIN_PASSWORD')
 
