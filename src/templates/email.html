@@ -16,7 +16,7 @@
                             <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="center" valign="top">
-                                        <h1>Interview: firstname lastname, client/vendor</h1>
+                                        <h1>Interview: {% firstname %} {% lastname %}, client/vendor</h1>
                                     </td>
                                 </tr>
                             </table>
@@ -27,7 +27,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Consultant: 
+                                        Consultant: {% firstname %} {% lastname %}
                                     </td>
                                 </tr>
                             </table>
@@ -38,7 +38,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Time: 
+                                        Time: {% time %}
                                     </td>
                                 </tr>
                             </table>
@@ -49,7 +49,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        client: 
+                                        client: {% client %}
                                     </td>
                                 </tr>
                             </table>
@@ -60,7 +60,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Vendor: 
+                                        Vendor: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -71,7 +71,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Implementation Partner: 
+                                        Implementation Partner: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -82,7 +82,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Mode (Inbound or Outbound): 
+                                        Mode (Inbound or Outbound): {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -93,7 +93,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Call Type: 
+                                        Call Type: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -104,7 +104,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        First Technical Assistant: 
+                                        First Technical Assistant: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -115,7 +115,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Second Technical Assistant: 
+                                        Second Technical Assistant: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -126,7 +126,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Sale Associate: 
+                                        Sale Associate: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -137,7 +137,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Manager: 
+                                        Manager: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -148,7 +148,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Live Coding: 
+                                        Live Coding: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -159,7 +159,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Position Title: 
+                                        Position Title: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -171,6 +171,9 @@
                                 <tr>
                                     <td align="left" valign="top">
                                         Job Description: 
+                                        <br>
+                                        <br>
+                                        {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -181,7 +184,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Project Duration: 
+                                        Project Duration: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -192,7 +195,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Project Location: 
+                                        Project Location: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -203,7 +206,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Client Website: 
+                                        Client Website: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -214,7 +217,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Vendor Website: 
+                                        Vendor Website: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -225,7 +228,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Interviewer Name: 
+                                        Interviewer Name: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -236,7 +239,7 @@
                             <table border="0" style="background-color: lightblue;color: black;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Interviewer LinkedIn: 
+                                        Interviewer LinkedIn: {%  %}
                                     </td>
                                 </tr>
                             </table>
@@ -247,7 +250,7 @@
                             <table border="0" style="background-color: blue;color: white;" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
                                 <tr>
                                     <td align="left" valign="top">
-                                        Vendor Notes: 
+                                        Vendor Notes: {%  %}
                                     </td>
                                 </tr>
                             </table>
