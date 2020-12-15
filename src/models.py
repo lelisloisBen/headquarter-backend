@@ -120,7 +120,7 @@ class websitemessages(db.Model):
     email_address = db.Column(db.String(120), nullable=False)
     contact_message = db.Column(db.Text, nullable=False)
     dt = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    read_flag = db.Column(db.Integer, default=1)
+    read_flag = db.Column(db.Integer, default=0)
 
     def __repr__(self):
         return '<websitemessages %r>' % self.full_name
