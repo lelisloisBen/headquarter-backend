@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-
+from sqlalchemy.sql import func
 db = SQLAlchemy()
 
 class logintokens(db.Model):
@@ -111,4 +111,25 @@ class interviews(db.Model):
             "interviewername": self.interviewername,
             "interviewerlinkedIn": self.interviewerlinkedIn,
             "vendornotes": self.vendornotes
+        }
+
+class websiteMessages(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    full_name = db.Column(db.String(120), nullable=False)
+    email_address = db.Column(db.String(120), nullable=False)
+    contact_message = db.Column(db.Text, nullable=False)
+    dt = db.Column(DateTime(timezone=True), server_default=func.now())
+    read_flag = db.Column(db.Integer, default=1)
+
+    def __repr__(self):
+        return '<websiteMessages %r>' % self.full_name
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "full_name": self.full_name,
+            "email_address": self.email_address,
+            "contact_message": self.contact_message,
+            "dt": self.dt,
+            "read_flag": self.read_flag
         }
