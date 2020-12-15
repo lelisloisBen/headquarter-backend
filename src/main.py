@@ -229,9 +229,9 @@ def new_message():
                 })
         else:
             db.session.add(websiteMessages(
-                msg_name = body['name'],
-                msg_email = body['email'],
-                msg_message = body['message']
+                full_name = body['name'],
+                email_address = body['email'],
+                contact_message = body['message']
             ))
 
             db.session.commit()
