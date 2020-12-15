@@ -216,6 +216,35 @@ def list_interviews():
 
     return "Invalid Method", 404
 
+@app.route('/newMessage', methods=['POST'])
+def new_message():
+    
+    if request.method == 'POST':
+        body = request.get_json()
+
+        if body is None:
+            return jsonify({
+                'msg': 'empty',
+                'txt': 'Form cannot be empty'
+                })
+        else:
+            db.session.add(websiteMessages(
+                msg_name = body['name'],
+                msg_email = body['email'],
+                msg_message = body['message']
+            ))
+
+            db.session.commit()
+            return jsonify({
+                'msg': 'success',
+                'txt': 'message sent successfully'
+            })
+
+    return jsonify({
+        "msg": "error",
+        "txt": "Invalid Method"
+    }), 404
+
 
 
 # this only runs if `$ python src/main.py` is executed
