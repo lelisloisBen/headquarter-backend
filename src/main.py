@@ -225,7 +225,7 @@ def new_message():
         if body is None:
             return jsonify({
                 'msg': 'empty',
-                'txt': 'Form cannot be empty'
+                'txt': 'Form cannot be empty!'
                 })
         else:
             db.session.add(websiteMessages(
