@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from utils import APIException
-from models import db, Consultants, logintokens, interviews
+from models import db, Consultants, logintokens, interviews, websiteMessages
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 from flask_mail import Mail, Message
