@@ -114,7 +114,7 @@ class interviews(db.Model):
             "vendornotes": self.vendornotes
         }
 
-class websiteMessages(db.Model):
+class websitemessages(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     full_name = db.Column(db.String(120), nullable=False)
     email_address = db.Column(db.String(120), nullable=False)
@@ -123,7 +123,7 @@ class websiteMessages(db.Model):
     read_flag = db.Column(db.Integer, default=1)
 
     def __repr__(self):
-        return '<websiteMessages %r>' % self.full_name
+        return '<websitemessages %r>' % self.full_name
 
     def serialize(self):
         return {

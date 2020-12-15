@@ -52,7 +52,7 @@ create table interviews(
    PRIMARY KEY ( id )
 );
 
-create table websiteMessages(
+create table websitemessages(
    id INT NOT NULL AUTO_INCREMENT,
    full_name VARCHAR(120),
    email_address VARCHAR(120),

@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from utils import APIException
-from models import db, Consultants, logintokens, interviews, websiteMessages
+from models import db, Consultants, logintokens, interviews, websitemessages
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 from flask_mail import Mail, Message
@@ -228,7 +228,7 @@ def new_message():
                 'txt': 'Form cannot be empty!'
                 })
         else:
-            db.session.add(websiteMessages(
+            db.session.add(websitemessages(
                 full_name = body['name'],
                 email_address = body['email'],
                 contact_message = body['message']
