@@ -245,6 +245,18 @@ def new_message():
         "txt": "Invalid Method"
     }), 404
 
+@app.route('/allWebsiteMessages', methods=['GET'])
+def list_messages():
+
+    if request.method == 'GET':
+        allMessages = websitemessages.query.all()
+
+        if not allMessages:
+            return jsonify({'msg':'Messages not found'}), 404
+
+        return jsonify( [x.serialize() for x in allMessages] ), 200
+
+    return "Invalid Method", 404
 
 
 # this only runs if `$ python src/main.py` is executed
