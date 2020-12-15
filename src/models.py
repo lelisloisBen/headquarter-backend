@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import func
-import datetime
+from datetime import datetime
+
 db = SQLAlchemy()
 
 class logintokens(db.Model):
@@ -119,7 +119,7 @@ class websiteMessages(db.Model):
     full_name = db.Column(db.String(120), nullable=False)
     email_address = db.Column(db.String(120), nullable=False)
     contact_message = db.Column(db.Text, nullable=False)
-    dt = db.Column(DateTime(timezone=True), server_default=func.now())
+    dt = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     read_flag = db.Column(db.Integer, default=1)
 
     def __repr__(self):
