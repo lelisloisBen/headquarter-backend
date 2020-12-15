@@ -58,6 +58,6 @@ create table websiteMessages(
    email_address VARCHAR(120),
    contact_message TEXT NOT NULL,
    dt DATETIME DEFAULT CURRENT_TIMESTAMP,
-   read INT DEFAULT 0,
+   read_flag INT DEFAULT 0,
    PRIMARY KEY ( id )
 );
