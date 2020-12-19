@@ -271,6 +271,29 @@ def count_messages():
 
     return "Invalid Method", 404
 
+@app.route('/messageProcessed', methods=['PUT'])
+def processed_message():
+
+    body = request.get_json()
+
+    if request.method == 'PUT':
+        updateMessage = websitemessages.query.get(body['id'])
+
+        if updateMessage is None:
+            raise APIException('Message not found', status_code=404)
+
+        if "read" in body:
+            updateMessage.read_flag = body["read"]
+
+            db.session.commit()
+            return jsonify({
+                'updated': 'success',
+                'msg': 'Successfully Updated'
+            })
+
+    return "Invalid Method, try again", 404
+
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
