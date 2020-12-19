@@ -258,6 +258,19 @@ def list_messages():
 
     return "Invalid Method", 404
 
+@app.route('/countMessage', methods=['GET'])
+def count_messages():
+
+    if request.method == 'GET':
+        countMessages = websitemessages.query(read_flag=0).count()
+
+        if not countMessages:
+            return jsonify({'msg':'Count Messages not found'}), 404
+
+        return jsonify(countMessages.serialize()), 200
+
+    return "Invalid Method", 404
+
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
