@@ -250,11 +250,15 @@ def list_messages():
 
     if request.method == 'GET':
         allMessages = websitemessages.query.all()
+        countMessages = websitemessages.query.filter_by(read_flag=0).count()
 
         if not allMessages:
             return jsonify({'msg':'Messages not found'}), 404
 
-        return jsonify( [x.serialize() for x in allMessages] ), 200
+        if not countMessages:
+            return jsonify({'msg':'Count Messages not found'}), 404
+
+        return jsonify( {"count": countMessages}, [x.serialize() for x in allMessages] ), 200
 
     return "Invalid Method", 404
 
