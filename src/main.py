@@ -258,7 +258,7 @@ def list_messages():
         if not countMessages:
             return jsonify({'msg':'Count Messages not found'}), 404
 
-        return jsonify( countMessages, [x.serialize() for x in allMessages] ), 200
+        return jsonify( "count": countMessages, [x.serialize() for x in allMessages] ), 200
 
     return "Invalid Method", 404
 
