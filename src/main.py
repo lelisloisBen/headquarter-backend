@@ -262,7 +262,7 @@ def list_messages():
 def count_messages():
 
     if request.method == 'GET':
-        countMessages = websitemessages.query(read_flag=0).count()
+        countMessages = websitemessages.query.filter_by(read_flag=0).count()
 
         if not countMessages:
             return jsonify({'msg':'Count Messages not found'}), 404
