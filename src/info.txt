@@ -61,3 +61,12 @@ create table websitemessages(
    read_flag INT DEFAULT 0,
    PRIMARY KEY ( id )
 );
+
+create table datavaultusers(
+   id INT NOT NULL AUTO_INCREMENT,
+   email VARCHAR(120) UNIQUE NOT NULL,
+   firstname VARCHAR(120) NOT NULL,
+   lastname VARCHAR(120) NOT NULL,
+   password VARCHAR(80) NOT NULL,
+   PRIMARY KEY ( id )
+);

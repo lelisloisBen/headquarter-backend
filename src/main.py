@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from utils import APIException
-from models import db, Consultants, logintokens, interviews, websitemessages
+from models import db, Consultants, logintokens, interviews, websitemessages, datavaultusers
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 from flask_mail import Mail, Message
@@ -292,6 +292,24 @@ def processed_message():
             })
 
     return "Invalid Method, try again", 404
+
+@app.route('/loginDatavaultWebsite', methods=['POST'])
+def handle_loginDatavault():
+
+    body = request.get_json()
+
+    user = datavaultusers.query.filter_by(email=body['email'], password=sha256(body['password'])).first()
+
+    if not user:
+        return 'User not found', 404
+
+    return jsonify({
+              'token': create_jwt(identity=1),
+              'id': user.id,
+              'email': user.email,
+              'firstname': user.firstname,
+              'lastname': user.lastname
+              })
 
 
 
