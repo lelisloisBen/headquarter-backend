@@ -293,6 +293,28 @@ def processed_message():
 
     return "Invalid Method, try again", 404
 
+@app.route('/updatePasswordDatavault', methods=['PUT'])
+def update_password():
+
+    body = request.get_json()
+
+    if request.method == 'PUT':
+        user = datavaultusers.query.filter_by(email=body['email'], password=sha256(body['oldpassword'])).first()
+
+        if not user:
+            return 'User not found', 404
+
+        if "oldpassword" in body:
+            user.password = sha256(body['newpassword'])
+
+            db.session.commit()
+            return jsonify({
+                'updated': 'success',
+                'msg': 'Successfully Updated'
+            })
+
+    return "Invalid Method, try again", 404
+
 @app.route('/loginDatavaultCourses', methods=['POST'])
 def handle_loginDatavault():
 
