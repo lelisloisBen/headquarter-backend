@@ -323,7 +323,7 @@ def handle_loginDatavault():
     user = datavaultusers.query.filter_by(email=body['email'], password=sha256(body['password'])).first()
 
     if not user:
-        return 'User not found', 404
+        return 'Wrong Password or Email', 404
 
     return jsonify({
               'token': create_jwt(identity=1),
