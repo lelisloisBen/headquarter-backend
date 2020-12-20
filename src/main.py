@@ -293,7 +293,7 @@ def processed_message():
 
     return "Invalid Method, try again", 404
 
-@app.route('/loginDatavaultWebsite', methods=['POST'])
+@app.route('/loginDatavaultCourses', methods=['POST'])
 def handle_loginDatavault():
 
     body = request.get_json()
@@ -311,8 +311,41 @@ def handle_loginDatavault():
               'lastname': user.lastname
               })
 
+@app.route('/registerDatavaultCourses', methods=['POST'])
+def handle_registerDatavault():
+
+    body = request.get_json()
+
+    if body is None:
+        raise APIException("You need to specify the request body as a json object", status_code=400)
+    if 'firstname' not in body and 'lastname' not in body:
+        raise APIException("You need to specify the first name and last name", status_code=400)
+    if 'password' not in body and 'email' not in body:
+        raise APIException("You need to specify the password and email", status_code=400)
+    if 'firstname' not in body:
+        raise APIException('You need to specify the first name', status_code=400)
+    if 'lastname' not in body:
+        raise APIException('You need to specify the last name', status_code=400)
+    if 'password' not in body:
+        raise APIException('You need to specify the password', status_code=400)
+    if 'email' not in body:
+        raise APIException('You need to specify the email', status_code=400)
+
+    db.session.add(datavaultusers(
+        email = body['email'],
+        firstname = body['firstname'],
+        lastname = body['lastname'],
+        password = sha256(body['password'])
+    ))
+    db.session.commit()
+
+    return jsonify({
+        'register': 'success',
+        'msg': 'Successfully Registered'
+    })
 
 
+######################################################
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
