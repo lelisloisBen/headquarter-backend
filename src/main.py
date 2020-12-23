@@ -6,8 +6,8 @@ from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 from flask_mail import Mail, Message
 
-# loginEmail = os.environ.get('LOGIN_EMAIL')
-# loginPassword = os.environ.get('LOGIN_PASSWORD')
+loginEmail = os.environ.get('LOGIN_EMAIL')
+loginPassword = os.environ.get('LOGIN_PASSWORD')
 
 app = Flask(__name__)
 app.config.from_object("config")
