@@ -388,6 +388,26 @@ def list_students():
 
     return "Invalid Method", 404
 
+@app.route('/updateCourses', methods=['PUT'])
+def update_courses():
+
+    body = request.get_json()
+
+    if request.method == 'PUT':
+        updateCourses = datavaultusers.query.get(body['id'])
+
+        if updateCourses is None:
+            raise APIException('Message not found', status_code=404)
+
+        if "course" in body:
+            updateCourses.courses = body["course"]
+
+            db.session.commit()
+            return jsonify({
+                'updated': 'success',
+                'msg': 'Successfully Updated'
+            })
+
 
 ######################################################
 # this only runs if `$ python src/main.py` is executed
