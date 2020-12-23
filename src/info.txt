@@ -68,5 +68,6 @@ create table datavaultusers(
    firstname VARCHAR(120) NOT NULL,
    lastname VARCHAR(120) NOT NULL,
    password VARCHAR(80) NOT NULL,
+   courses INT NOT NULL DEFAULT 0,
    PRIMARY KEY ( id )
 );
