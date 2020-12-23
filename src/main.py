@@ -271,7 +271,7 @@ def count_messages():
 
     return "Invalid Method", 404
 
-@app.route('/messageProcessed', methods=['PUT', 'DELETE'])
+@app.route('/messageProcessed', methods=['PUT', 'POST'])
 def processed_message():
 
     body = request.get_json()
@@ -291,14 +291,14 @@ def processed_message():
                 'msg': 'Successfully Updated'
             })
     
-    if request.method == 'DELETE':
+    if request.method == 'POST':
         deleteMessage = websitemessages.query.get(body['id'])
         db.session.delete(deleteMessage)
         db.session.commit()
-            return jsonify({
-                'updated': 'success',
-                'msg': 'Successfully Deleted'
-            })
+        return jsonify({
+            'updated': 'success',
+            'msg': 'Successfully Deleted'
+        })
 
     return "Invalid Method, try again", 404
 
