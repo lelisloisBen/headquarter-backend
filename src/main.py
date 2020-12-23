@@ -375,6 +375,19 @@ def handle_registerDatavault():
         'msg': 'Successfully Registered'
     })
 
+@app.route('/students', methods=['GET'])
+def list_students():
+
+    if request.method == 'GET':
+        allStudents = datavaultusers.query.all()
+
+        if not allStudents:
+            return jsonify({'msg':'User not found'}), 404
+
+        return jsonify( [x.serialize() for x in allStudents] ), 200
+
+    return "Invalid Method", 404
+
 
 ######################################################
 # this only runs if `$ python src/main.py` is executed
