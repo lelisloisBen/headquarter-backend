@@ -339,7 +339,8 @@ def handle_loginDatavault():
               'id': user.id,
               'email': user.email,
               'firstname': user.firstname,
-              'lastname': user.lastname
+              'lastname': user.lastname,
+              'courses': user.courses
               })
 
 @app.route('/registerDatavaultCourses', methods=['POST'])
