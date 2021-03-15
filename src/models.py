@@ -154,3 +154,30 @@ class datavaultusers(db.Model):
             "lastname": self.lastname,
             "courses": self.courses
         }
+
+class usersmessageslivechat(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(120), nullable=False)
+    country = db.Column(db.String(120), nullable=False)
+    state = db.Column(db.String(120), nullable=False)
+    city = db.Column(db.String(120), nullable=False)
+    latitude = db.Column(db.String(120), nullable=False)
+    longitude = db.Column(db.String(120), nullable=False)
+    ip = db.Column(db.String(120), nullable=False)
+    saveddate = db.Column(db.String(120), nullable=False)
+
+    def __repr__(self):
+        return '<usersmessageslivechat %r>' % self.email
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "username": self.username,
+            "country": self.country,
+            "state": self.state,
+            "city": self.city,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
+            "ip": self.ip,
+            "saveddate": self.saveddate
+        }

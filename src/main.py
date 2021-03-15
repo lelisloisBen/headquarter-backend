@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from utils import APIException, sha256
-from models import db, Consultants, logintokens, interviews, websitemessages, datavaultusers
+from models import db, Consultants, logintokens, interviews, websitemessages, datavaultusers, usersmessageslivechat
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 from flask_mail import Mail, Message
@@ -409,6 +409,30 @@ def update_courses():
                 'msg': 'Successfully Updated'
             })
 
+@app.route('/saveMessagesFromLiveChat', methods=['POST'])
+def liveChat_messages_save():
+
+    body = request.get_json()
+
+    if body is None:
+        raise APIException("You need to specify the request body as a json object", status_code=400)
+
+    db.session.add(usersmessageslivechat(
+        username = body['username'],
+        country = body['country'],
+        state = body['state'],
+        city = body['city'],
+        latitude = body['latitude'],
+        longitude = body['longitude'],
+        ip = body['ip'],
+        saveddate = body['saveddate']
+    ))
+    db.session.commit()
+
+    return jsonify({
+        'register': 'success',
+        'msg': 'message saved'
+    })
 
 ######################################################
 # this only runs if `$ python src/main.py` is executed

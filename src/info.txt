@@ -71,3 +71,16 @@ create table datavaultusers(
    courses INT NOT NULL DEFAULT 1,
    PRIMARY KEY ( id )
 );
+
+create table usersmessageslivechat(
+   id INT NOT NULL AUTO_INCREMENT,
+   username VARCHAR(120) NOT NULL,
+   country VARCHAR(120) NOT NULL,
+   state VARCHAR(120) NOT NULL,
+   city VARCHAR(120) NOT NULL,
+   latitude VARCHAR(120) NOT NULL,
+   longitude VARCHAR(120) NOT NULL,
+   ip VARCHAR(120) NOT NULL,
+   saveddate VARCHAR(120) NOT NULL,
+   PRIMARY KEY ( id )
+);
