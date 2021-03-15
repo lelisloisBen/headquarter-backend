@@ -425,6 +425,7 @@ def liveChat_messages_save():
         latitude = body['latitude'],
         longitude = body['longitude'],
         ip = body['ip'],
+        message = body['message'],
         saveddate = body['saveddate']
     ))
     db.session.commit()

@@ -164,6 +164,7 @@ class usersmessageslivechat(db.Model):
     latitude = db.Column(db.String(120), nullable=False)
     longitude = db.Column(db.String(120), nullable=False)
     ip = db.Column(db.String(120), nullable=False)
+    message = db.Column(db.Text, nullable=False)
     saveddate = db.Column(db.String(120), nullable=False)
 
     def __repr__(self):
@@ -179,5 +180,6 @@ class usersmessageslivechat(db.Model):
             "latitude": self.latitude,
             "longitude": self.longitude,
             "ip": self.ip,
+            "message": self.message,
             "saveddate": self.saveddate
         }

@@ -81,6 +81,7 @@ create table usersmessageslivechat(
    latitude VARCHAR(120) NOT NULL,
    longitude VARCHAR(120) NOT NULL,
    ip VARCHAR(120) NOT NULL,
+   message TEXT NOT NULL,
    saveddate VARCHAR(120) NOT NULL,
    PRIMARY KEY ( id )
 );
