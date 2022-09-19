@@ -8,12 +8,17 @@ from flask_mail import Mail, Message
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from skpy import Skype
 
 loginEmail = os.environ.get('LOGIN_EMAIL')
 loginPassword = os.environ.get('LOGIN_PASSWORD')
 # TEST sending email from rackspace
 emailSenderTest = os.environ.get('EMAIL_SENDER')
 passwordSenderTest = os.environ.get('PASSWORD_SENDER')
+# TEST sending skype message
+skypeUsername = os.environ.get('SKYPE_USERNAME')
+skypePassword = os.environ.get('SKYPE_PASSWORD')
+skypeChannelID = os.environ.get('SKYPE_CHANNEL_ID')
 
 app = Flask(__name__)
 app.config.from_object("config")
@@ -471,6 +476,20 @@ def sendEmailTest():
             'msg': 'email sent!'
         }) 
 
+@app.route('/sendSkypeMessageTest', methods=['POST'])
+def sendSkypeMessageTest():
+    body = request.get_json()
+    if body is None:
+        raise APIException("You need to specify the request body as a json object", status_code=400)
+    
+    message = body["email_body"]
+
+    sk = Skype(skypeUsername,skypePassword) 
+    channel = sk.chats.chat(skypeChannelID) 
+    channel.sendMsg(message)
+    return jsonify({
+            'msg': 'skype message sent!'
+        })
 
 ######################################################
 # this only runs if `$ python src/main.py` is executed
