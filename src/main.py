@@ -450,15 +450,14 @@ def sendEmailTest():
     sender_email = emailSenderTest
     password = passwordSenderTest
     receiver_email = body["email_receiver"]
+    subject_email = body["email_subject"]
+    body_receiver = body["email_body"]
 
     message = MIMEMultipart("alternative")
-    message["Subject"] = "multipart test"
+    message["Subject"] = subject_email
     message["From"] = sender_email
     message["To"] = receiver_email
-    text = """\
-    Hi,
-    How are you? It's a message from Samir using Python program
-    """
+    text = body_receiver
     part1 = MIMEText(text, "plain")
     message.attach(part1)
     # Create secure connection with server and send email
