@@ -468,6 +468,9 @@ def sendEmailTest():
         server.sendmail(
             sender_email, receiver_email, message.as_string()
         )
+        return jsonify({
+            'msg': 'email sent!'
+        }) 
 
 
 ######################################################
