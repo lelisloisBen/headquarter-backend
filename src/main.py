@@ -5,9 +5,15 @@ from models import db, Consultants, logintokens, interviews, websitemessages, da
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 from flask_mail import Mail, Message
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 loginEmail = os.environ.get('LOGIN_EMAIL')
 loginPassword = os.environ.get('LOGIN_PASSWORD')
+# TEST sending email from rackspace
+emailSenderTest = os.environ.get('EMAIL_SENDER')
+passwordSenderTest = os.environ.get('PASSWORD_SENDER')
 
 app = Flask(__name__)
 app.config.from_object("config")
@@ -434,6 +440,35 @@ def liveChat_messages_save():
         'register': 'success',
         'msg': 'message saved'
     })
+
+@app.route('/sendEmailTest', methods=['POST'])
+def sendEmailTest():
+    body = request.get_json()
+    if body is None:
+        raise APIException("You need to specify the request body as a json object", status_code=400)
+
+    sender_email = emailSenderTest
+    password = passwordSenderTest
+    receiver_email = body["email_receiver"]
+
+    message = MIMEMultipart("alternative")
+    message["Subject"] = "multipart test"
+    message["From"] = sender_email
+    message["To"] = receiver_email
+    text = """\
+    Hi,
+    How are you? It's a message from Samir using Python program
+    """
+    part1 = MIMEText(text, "plain")
+    message.attach(part1)
+    # Create secure connection with server and send email
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL("secure.emailsrvr.com", 465, context=context) as server:
+        server.login(sender_email, password)
+        server.sendmail(
+            sender_email, receiver_email, message.as_string()
+        )
+
 
 ######################################################
 # this only runs if `$ python src/main.py` is executed
