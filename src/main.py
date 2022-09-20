@@ -346,7 +346,7 @@ def handle_loginDatavault():
         return 'Wrong Password or Email', 404
 
     return jsonify({
-              'token': create_jwt(identity=1),
+            #   'token': create_jwt(identity=1),
               'id': user.id,
               'email': user.email,
               'firstname': user.firstname,
