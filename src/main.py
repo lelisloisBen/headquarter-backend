@@ -127,9 +127,9 @@ def new_consultant():
             emailWork = body['emailWork'],
             phone = body['phone'],
             skype = body['skype'],
-            bankName = body['bankName'],
-            routing = body['routing'],
-            account = body['account']
+            last4ssn = body['last4ssn'],
+            trainingstart = body['trainingstart'],
+            cohort = body['cohort']
         ))
 
         db.session.commit()

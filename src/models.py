@@ -30,9 +30,9 @@ class Consultants(db.Model):
     emailWork = db.Column(db.String(120))
     phone = db.Column(db.String(120))
     skype = db.Column(db.String(120))
-    bankName = db.Column(db.String(120))
-    routing = db.Column(db.String(120))
-    account = db.Column(db.String(120))
+    last4ssn = db.Column(db.String(12))
+    trainingstart = db.Column(db.String(12))
+    cohort = db.Column(db.String(12))
 
     def __repr__(self):
         return '<Consultants %r>' % self.firstname
@@ -52,9 +52,9 @@ class Consultants(db.Model):
             "emailWork": self.emailWork,
             "phone": self.phone,
             "skype": self.skype,
-            "bankName": self.bankName,
-            "routing": self.routing,
-            "account": self.account
+            "last4ssn": self.last4ssn,
+            "trainingstart": self.trainingstart,
+            "cohort": self.cohort
         }
 
 class interviews(db.Model):
