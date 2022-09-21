@@ -496,7 +496,7 @@ def addInterviewAll():
         decodedJD)
 
    
-    textBodySkype = """
+    textBodySkype = """\
     INTERVIEWER: %s\r
     COMPANY NAME: %s\r
     TYPE: %s, %s\r
