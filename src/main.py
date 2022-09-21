@@ -468,7 +468,7 @@ def sendSkypeMessageTest():
 @app.route('/addInterviewAll', methods=['POST'])
 def addInterviewAll():
     body = request.get_json()
-    decodedJD = unquote(body['JD'])
+    decodedJD = utils.unquote(body['JD'])
     textBody = """\
     <html>
     <body>
