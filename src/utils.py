@@ -46,7 +46,7 @@ def sendEmail(receiver,subject,body):
     message["Subject"] = subject_email
     message["From"] = sender_email
     message["To"] = receiver_email
-    body_plainText = MIMEText(body_receiver, "plain")
+    body_plainText = MIMEText(body_receiver, "html")
     message.attach(body_plainText)
     context = ssl.create_default_context()
     with smtplib.SMTP_SSL("secure.emailsrvr.com", 465, context=context) as server:

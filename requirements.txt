@@ -7,3 +7,4 @@ flask_jwt_simple
 Flask-Mail
 secure-smtplib
 skpy
+urllib

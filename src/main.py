@@ -5,6 +5,7 @@ from models import db, Consultants, logintokens, interviews, websitemessages, da
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 from flask_mail import Mail, Message
+from urllib.parse import unquote
 
 app = Flask(__name__)
 app.config.from_object("config")
@@ -467,15 +468,21 @@ def sendSkypeMessageTest():
 @app.route('/addInterviewAll', methods=['POST'])
 def addInterviewAll():
     body = request.get_json()
+    decodedJD = unquote(body['JD'])
     textBody = """\
-    INTERVIEWER: %s\r
-    COMPANY NAME: %s\r
-    TYPE: %s, %s\r
-    LIVE CODING: %s\r
-    INTERVIEWEE: %s %s \r
-    DATE/TIME: %s \r
-    JOB TITLE: %s \r
-    JOD DESCRIPTION: \r\r%s \r
+    <html>
+    <body>
+        <b>
+        <b>INTERVIEWER:</b> %s <br/>
+        <b>COMPANY NAME:</b> %s <br/>
+        <b>TYPE:</b> %s, %s <br/>
+        <b>LIVE CODING:</b> %s <br/>
+        <b>INTERVIEWEE:</b> %s %s <br/>
+        <b>DATE/TIME:</b> %s <br/>
+        <b>JOB TITLE:</b> %s <br/>
+        <b>JOD DESCRIPTION:</b><br/>%s<br/>
+    </body>
+    </html>
     """%(
         body['InterviewerName'],
         body['Client'],
@@ -486,7 +493,29 @@ def addInterviewAll():
         body['c_lastname'],
         body['Time'],
         body['PositionTitle'],
-        body['JD'])
+        decodedJD)
+
+   
+    # textBody = """\
+    # INTERVIEWER: %s\r
+    # COMPANY NAME: %s\r
+    # TYPE: %s, %s\r
+    # LIVE CODING: %s\r
+    # INTERVIEWEE: %s %s \r
+    # DATE/TIME: %s \r
+    # JOB TITLE: %s \r
+    # JOD DESCRIPTION: \r\r%s \r
+    # """%(
+    #     body['InterviewerName'],
+    #     body['Client'],
+    #     body['Mode'],
+    #     body['Type'],
+    #     body['LiveCoding'],
+    #     body['c_firstname'],
+    #     body['c_lastname'],
+    #     body['Time'],
+    #     body['PositionTitle'],
+    #     body['JD'])
   
     if body is None:
         raise APIException("You need to specify the request body as a json object", status_code=400)
