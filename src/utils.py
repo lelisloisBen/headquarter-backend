@@ -60,16 +60,16 @@ def sendSkype(body):
     channel = sk.chats.chat(skypeChannelID) 
     channel.sendMsg(body)
 
-def longText(body):
-    textBody = """\
-        this is another test from python!
-        Interviewer: %s\r
-        Company Name: %s\r
-        Type: %s, %s\r
-        Live Coding: 
-        Interviewee: %s %s \r
-        Date/Time: %s \r
-        Job Title: %s \r
-        Job Description: \n %s \r
-    """%(body['InterviewerName'],body['Client'],body['Mode'],body['Type'],body['LiveCoding'],body['c_firstname'],body['c_lastname'],body['Time'],body['PositionTitle'],body['JD'])
-    return textBody
+# def longText(body):
+#     textBody = """\
+#         this is another test from python!
+#         Interviewer: %s\r
+#         Company Name: %s\r
+#         Type: %s, %s\r
+#         Live Coding: 
+#         Interviewee: %s %s \r
+#         Date/Time: %s \r
+#         Job Title: %s \r
+#         Job Description: \n %s \r
+#     """%(body['InterviewerName'],body['Client'],body['Mode'],body['Type'],body['LiveCoding'],body['c_firstname'],body['c_lastname'],body['Time'],body['PositionTitle'],body['JD'])
+#     return textBody

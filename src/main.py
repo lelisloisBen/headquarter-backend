@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-from utils import APIException, sha256, sendEmail, sendSkype, longText
+from utils import APIException, sha256, sendEmail, sendSkype
 from models import db, Consultants, logintokens, interviews, websitemessages, datavaultusers, usersmessageslivechat
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
@@ -467,16 +467,27 @@ def sendSkypeMessageTest():
 @app.route('/addInterviewAll', methods=['POST'])
 def addInterviewAll():
     body = request.get_json()
+    textBody = """\
+        this is another test from python!
+        Interviewer: %s\r
+        Company Name: %s\r
+        Type: %s, %s\r
+        Live Coding: 
+        Interviewee: %s %s \r
+        Date/Time: %s \r
+        Job Title: %s \r
+        Job Description: \n %s \r
+    """%(body['InterviewerName'],body['Client'],body['Mode'],body['Type'],body['LiveCoding'],body['c_firstname'],body['c_lastname'],body['Time'],body['PositionTitle'],body['JD'])
+  
     if body is None:
         raise APIException("You need to specify the request body as a json object", status_code=400)
     try:
-        text = longText(body)
         # send email using rackspace
-        sendEmail(body["c_email"],"New Interview",text)
+        sendEmail(body["c_email"],"New Interview",textBody)
         # send text message
         # sendEmail(body["phone"],body["email_subject"],body["email_body"])
         # send skype message to UIT BOSS Channel
-        sendSkype(text)
+        sendSkype(textBody)
         # insert to Database
         db.session.add(interviews(
             firstname = body['c_firstname'],
