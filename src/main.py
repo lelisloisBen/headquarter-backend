@@ -469,7 +469,7 @@ def sendSkypeMessageTest():
 def addInterviewAll():
     body = request.get_json()
     decodedJD = utils.unquote(body['JD'])
-    textBody = """\
+    textBodyEmail = """\
     <html>
     <body>
         <b>
@@ -496,38 +496,38 @@ def addInterviewAll():
         decodedJD)
 
    
-    # textBody = """\
-    # INTERVIEWER: %s\r
-    # COMPANY NAME: %s\r
-    # TYPE: %s, %s\r
-    # LIVE CODING: %s\r
-    # INTERVIEWEE: %s %s \r
-    # DATE/TIME: %s \r
-    # JOB TITLE: %s \r
-    # JOD DESCRIPTION: \r\r%s \r
-    # """%(
-    #     body['InterviewerName'],
-    #     body['Client'],
-    #     body['Mode'],
-    #     body['Type'],
-    #     body['LiveCoding'],
-    #     body['c_firstname'],
-    #     body['c_lastname'],
-    #     body['Time'],
-    #     body['PositionTitle'],
-    #     body['JD'])
+    textBodySkype = """
+    INTERVIEWER: %s\r
+    COMPANY NAME: %s\r
+    TYPE: %s, %s\r
+    LIVE CODING: %s\r
+    INTERVIEWEE: %s %s \r
+    DATE/TIME: %s \r
+    JOB TITLE: %s \r
+    JOD DESCRIPTION: \r\r%s \r
+    """%(
+        body['InterviewerName'],
+        body['Client'],
+        body['Mode'],
+        body['Type'],
+        body['LiveCoding'],
+        body['c_firstname'],
+        body['c_lastname'],
+        body['Time'],
+        body['PositionTitle'],
+        decodedJD)
   
     if body is None:
         raise APIException("You need to specify the request body as a json object", status_code=400)
     try:
         # send email using rackspace
-        sendEmail(body["c_email"],"New Interview",textBody)
+        sendEmail(body["c_email"],"New Interview",textBodyEmail)
         print("email sent")
         print("reciver email: ",body["c_email"])
         # send text message
         # sendEmail(body["phone"],body["email_subject"],body["email_body"])
         # send skype message to UIT BOSS Channel
-        sendSkype(textBody)
+        sendSkype(textBodySkype)
         print("skype sent")
         # insert to Database
         db.session.add(interviews(
