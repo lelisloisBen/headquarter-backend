@@ -468,15 +468,15 @@ def sendSkypeMessageTest():
 def addInterviewAll():
     body = request.get_json()
     textBody = """\
-        this is another test from python!
-        Interviewer: %s\r
-        Company Name: %s\r
-        Type: %s, %s\r
-        Live Coding: %s\r
-        Interviewee: %s %s \r
-        Date/Time: %s \r
-        Job Title: %s \r
-        Job Description: \n %s \r
+    this is another test from python!
+    \033[1mInterviewer:\033[0m %s\r
+    \033[1mCompany Name\033[0m: %s\r
+    \033[1mType:\033[0m %s, %s\r
+    \033[1mLive Coding:\033[0m %s\r
+    \033[1mInterviewee:\033[0m %s %s \r
+    \033[1mDate/Time:\033[0m %s \r
+    \033[1mJob Title:\033[0m %s \r
+    \033[1mJob Description:\033[0m \r %s \r
     """%(
         body['InterviewerName'],
         body['Client'],
