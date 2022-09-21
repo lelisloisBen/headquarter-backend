@@ -494,10 +494,13 @@ def addInterviewAll():
     try:
         # send email using rackspace
         sendEmail(body["c_email"],"New Interview",textBody)
+        print("email sent")
+        print("reciver email: ",body["c_email"])
         # send text message
         # sendEmail(body["phone"],body["email_subject"],body["email_body"])
         # send skype message to UIT BOSS Channel
         sendSkype(textBody)
+        print("skype sent")
         # insert to Database
         db.session.add(interviews(
             firstname = body['c_firstname'],
@@ -525,6 +528,7 @@ def addInterviewAll():
             vendornotes = body['VendorNotes']
         ))
         db.session.commit()
+        print("db added")
     except Exception as e:
         print(e)
         return jsonify({
