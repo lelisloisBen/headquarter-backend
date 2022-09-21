@@ -5,6 +5,7 @@ from models import db, Consultants, logintokens, interviews, websitemessages, da
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 from flask_mail import Mail, Message
+from request import decodeURIComponent
 
 app = Flask(__name__)
 app.config.from_object("config")
