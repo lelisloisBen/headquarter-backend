@@ -1,24 +1,10 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-from utils import APIException, sha256, sendEmail, sendSkype
+from utils import APIException, sha256, sendEmail, sendSkype, longText
 from models import db, Consultants, logintokens, interviews, websitemessages, datavaultusers, usersmessageslivechat
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 from flask_mail import Mail, Message
-import smtplib, ssl
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from skpy import Skype
-
-loginEmail = os.environ.get('LOGIN_EMAIL')
-loginPassword = os.environ.get('LOGIN_PASSWORD')
-# TEST sending email from rackspace
-emailSenderTest = os.environ.get('EMAIL_SENDER')
-passwordSenderTest = os.environ.get('PASSWORD_SENDER')
-# TEST sending skype message
-skypeUsername = os.environ.get('SKYPE_USERNAME')
-skypePassword = os.environ.get('SKYPE_PASSWORD')
-skypeChannelID = os.environ.get('SKYPE_CHANNEL_ID')
 
 app = Flask(__name__)
 app.config.from_object("config")
@@ -448,44 +434,34 @@ def sendEmailTest():
     body = request.get_json()
     if body is None:
         raise APIException("You need to specify the request body as a json object", status_code=400)
-
-    sender_email = emailSenderTest
-    password = passwordSenderTest
-    receiver_email = body["email_receiver"]
-    subject_email = body["email_subject"]
-    body_receiver = body["email_body"]
-
-    message = MIMEMultipart("alternative")
-    message["Subject"] = subject_email
-    message["From"] = sender_email
-    message["To"] = receiver_email
-    text = body_receiver
-    part1 = MIMEText(text, "plain")
-    message.attach(part1)
-    # Create secure connection with server and send email
-    context = ssl.create_default_context()
-    with smtplib.SMTP_SSL("secure.emailsrvr.com", 465, context=context) as server:
-        server.login(sender_email, password)
-        server.sendmail(
-            sender_email, receiver_email, message.as_string()
-        )
+    try:
+        sendEmail(body["email_receiver"],body["email_subject"],body["email_body"])
+    except Exception as e:
+        print(e)
+        return jsonify({
+            'msg': e
+        })
+    finally:
         return jsonify({
             'msg': 'email sent!'
-        }) 
+        })
+    
 
 @app.route('/sendSkypeMessageTest', methods=['POST'])
 def sendSkypeMessageTest():
     body = request.get_json()
     if body is None:
         raise APIException("You need to specify the request body as a json object", status_code=400)
-    
-    message = body["email_body"]
-
-    sk = Skype(skypeUsername,skypePassword) 
-    channel = sk.chats.chat(skypeChannelID) 
-    channel.sendMsg(message)
-    return jsonify({
-            'msg': 'skype message sent!'
+    try:
+        sendSkype(body["email_body"])
+    except Exception as e:
+        print(e)
+        return jsonify({
+            'msg': e
+        })
+    finally:
+        return jsonify({
+            'msg': 'skype sent!'
         })
 
 @app.route('/addInterviewAll', methods=['POST'])
@@ -494,9 +470,40 @@ def addInterviewAll():
     if body is None:
         raise APIException("You need to specify the request body as a json object", status_code=400)
     try:
-        sendEmail(body["email_receiver"],body["email_subject"],body["email_body"])
-        sendEmail(body["phone"],body["email_subject"],body["email_body"])
-        sendSkype(body["email_body"])
+        text = longText(body)
+        # send email using rackspace
+        sendEmail(body["c_email"],"New Interview",text)
+        # send text message
+        # sendEmail(body["phone"],body["email_subject"],body["email_body"])
+        # send skype message to UIT BOSS Channel
+        sendSkype(text)
+        # insert to Database
+        db.session.add(interviews(
+            firstname = body['c_firstname'],
+            lastname = body['c_lastname'],
+            email = body['c_email'],
+            time = body['Time'],
+            client = body['Client'],
+            vendor = body['Vendor'],
+            implementationpartner = body['ImplementationPartner'],
+            mode = body['Mode'],
+            calltype = body['Type'],
+            assist1 = body['assist1'],
+            assist2 = body['assist2'],
+            saleassociate = body['SA'],
+            manager = body['Manager'],
+            livecoding = body['LiveCoding'],
+            positiontitle = body['PositionTitle'],
+            jobdescription = body['JD'],
+            projectduration = body['ProjectDuration'],
+            projectlocation = body['ProjectLocation'],
+            clientwebsite = body['ClientWebsite'],
+            vendorwebsite = body['VendorWebsite'],
+            interviewername = body['InterviewerName'],
+            interviewerlinkedIn = body['InterviewerLinkedIn'],
+            vendornotes = body['VendorNotes']
+        ))
+        db.session.commit()
     except Exception as e:
         print(e)
         return jsonify({
