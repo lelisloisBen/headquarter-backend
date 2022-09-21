@@ -1,6 +1,10 @@
 from flask import jsonify, url_for
 import hashlib
 import os
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from skpy import Skype
 
 # sending email from rackspace
 emailSenderTest = os.environ.get('EMAIL_SENDER')
