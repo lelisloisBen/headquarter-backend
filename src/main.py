@@ -493,9 +493,20 @@ def addInterviewAll():
     body = request.get_json()
     if body is None:
         raise APIException("You need to specify the request body as a json object", status_code=400)
+    try:
+        sendEmail(body["email_receiver"],body["email_subject"],body["email_body"])
+        sendSkype(body["email_body"])
+    except Exception as e:
+        print(e)
+        return jsonify({
+            'msg': e
+        })
+    finally:
+        return jsonify({
+            'msg': 'skype and email messages sent!'
+        })
 
-    sendEmail(body["email_receiver"],body["email_subject"],body["email_body"])
-    sendSkype(body["email_body"])
+
 
 
 ######################################################
