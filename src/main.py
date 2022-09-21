@@ -5,7 +5,7 @@ from models import db, Consultants, logintokens, interviews, websitemessages, da
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 from flask_mail import Mail, Message
-from requests import decodeURIComponent
+from requests import utils
 
 app = Flask(__name__)
 app.config.from_object("config")
@@ -468,7 +468,7 @@ def sendSkypeMessageTest():
 @app.route('/addInterviewAll', methods=['POST'])
 def addInterviewAll():
     body = request.get_json()
-    decodedJD = decodeURIComponent(body['JD'])
+    decodedJD = unquote(body['JD'])
     textBody = """\
     <html>
     <body>
