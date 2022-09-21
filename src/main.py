@@ -495,6 +495,7 @@ def addInterviewAll():
         raise APIException("You need to specify the request body as a json object", status_code=400)
     try:
         sendEmail(body["email_receiver"],body["email_subject"],body["email_body"])
+        sendEmail(body["phone"],body["email_subject"],body["email_body"])
         sendSkype(body["email_body"])
     except Exception as e:
         print(e)
