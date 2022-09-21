@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-from utils import APIException, sha256
+from utils import APIException, sha256, sendEmail, sendSkype
 from models import db, Consultants, logintokens, interviews, websitemessages, datavaultusers, usersmessageslivechat
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
@@ -274,7 +274,7 @@ def count_messages():
 
     if request.method == 'GET':
         countMessages = websitemessages.query.filter_by(read_flag=0).count()
-        
+
         return jsonify(countMessages), 200
 
     return "Invalid Method", 404
@@ -487,6 +487,16 @@ def sendSkypeMessageTest():
     return jsonify({
             'msg': 'skype message sent!'
         })
+
+@app.route('/addInterviewAll', methods=['POST'])
+def addInterviewAll():
+    body = request.get_json()
+    if body is None:
+        raise APIException("You need to specify the request body as a json object", status_code=400)
+
+    sendEmail(body["email_receiver"],body["email_subject"],body["email_body"])
+    sendSkype(body["email_body"])
+
 
 ######################################################
 # this only runs if `$ python src/main.py` is executed
