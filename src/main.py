@@ -568,7 +568,7 @@ def addInterviewAll():
         })
 
 @app.route('/loginPythonCourses', methods=['POST'])
-def handle_loginDatavault():
+def handle_loginPythonCourses():
 
     body = request.get_json()
 
@@ -585,7 +585,7 @@ def handle_loginDatavault():
               })
 
 @app.route('/registerPythonCourses', methods=['POST'])
-def handle_registerDatavault():
+def handle_registerPythonCourses():
 
     body = request.get_json()
 
