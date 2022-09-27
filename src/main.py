@@ -574,8 +574,10 @@ def handle_loginPythonCourses():
 
     user = pythonusers.query.filter_by(email=body['email'], password=sha256(body['password'])).first()
 
-    if not user:
-        return 'Wrong Password or Email', 404
+    if not user.password:
+        return 'Wrong Password', 404
+    if not user.email:
+        return 'Wrong Email', 404
 
     return jsonify({
               'id': user.id,
