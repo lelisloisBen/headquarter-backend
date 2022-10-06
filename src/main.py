@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-from utils import APIException, sha256, sendEmail, sendSkype
+from utils import APIException, sha256, sendEmail, sendSkype, googleCalendar
 from models import db, Consultants, logintokens, interviews, websitemessages, datavaultusers, usersmessageslivechat, pythonusers
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
@@ -618,6 +618,14 @@ def handle_registerPythonCourses():
         'register': 'success',
         'msg': 'Successfully Registered'
     })
+
+@app.route('/googleCalendar', methods=['GET'])
+def google_calendar():
+
+    if request.method == 'GET':
+        googleCalendar()
+
+    return "Invalid Method", 404
 
 ######################################################
 # this only runs if `$ python src/main.py` is executed
