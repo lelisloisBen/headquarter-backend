@@ -201,3 +201,18 @@ class pythonusers(db.Model):
             "firstname": self.firstname,
             "lastname": self.lastname
         }
+
+class questions(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    question = db.Column(db.String(200), nullable=False)
+    answer = db.Column(db.Text, nullable=False)
+
+    def __repr__(self):
+        return '<questions %r>' % self.question
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "question": self.question,
+            "answer": self.answer
+        }

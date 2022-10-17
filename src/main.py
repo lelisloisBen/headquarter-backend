@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from utils import APIException, sha256, sendEmail, sendSkype, googleCalendar
-from models import db, Consultants, logintokens, interviews, websitemessages, datavaultusers, usersmessageslivechat, pythonusers
+from models import db, Consultants, logintokens, interviews, websitemessages, datavaultusers, usersmessageslivechat, pythonusers, questions
 from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 from flask_mail import Mail, Message
@@ -624,6 +624,24 @@ def google_calendar():
 
     if request.method == 'GET':
         googleCalendar()
+
+    return "Invalid Method", 404
+
+@app.route('/addquestion', methods=['POST'])
+def add_question():
+    
+    if request.method == 'POST':
+        body = request.get_json()
+        db.session.add(questions(
+            question = body['question'],
+            answer = body['answer']
+        ))
+
+        db.session.commit()
+        return jsonify({
+            'created': 'success',
+            'msg': 'Question Added'
+        })
 
     return "Invalid Method", 404
 
