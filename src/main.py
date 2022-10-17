@@ -634,6 +634,7 @@ def add_question():
         body = request.get_json()
         db.session.add(questions(
             question = body['question'],
+            questionID = body['questionID'],
             answer = body['answer']
         ))
 

@@ -97,7 +97,9 @@ create table pythonusers(
 
 create table questions(
    id INT NOT NULL AUTO_INCREMENT,
+   questionID VARCHAR(120) NOT NULL,
    question VARCHAR(200) NOT NULL,
    answer TEXT NOT NULL,
    PRIMARY KEY ( id )
 );
+
