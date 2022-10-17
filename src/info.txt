@@ -94,3 +94,10 @@ create table pythonusers(
    password VARCHAR(80) NOT NULL,
    PRIMARY KEY ( id )
 );
+
+create table questions(
+   id INT NOT NULL AUTO_INCREMENT,
+   question VARCHAR(200) NOT NULL,
+   answer TEXT NOT NULL,
+   PRIMARY KEY ( id )
+);

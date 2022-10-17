@@ -645,6 +645,19 @@ def add_question():
 
     return "Invalid Method", 404
 
+@app.route('/questions', methods=['GET'])
+def list_questions():
+
+    if request.method == 'GET':
+        allQuestions = questions.query.all()
+
+        if not allQuestions:
+            return jsonify({'msg':'question not found'}), 404
+
+        return jsonify( [x.serialize() for x in allQuestions] ), 200
+
+    return "Invalid Method", 404
+
 ######################################################
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
