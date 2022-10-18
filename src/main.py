@@ -633,6 +633,7 @@ def add_question():
     if request.method == 'POST':
         body = request.get_json()
         db.session.add(questions(
+            cat = body['cat'],
             question = body['question'],
             questionID = body['questionID'],
             answer = body['answer']

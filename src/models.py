@@ -204,6 +204,7 @@ class pythonusers(db.Model):
 
 class questions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    cat = db.Column(db.String(100), nullable=False)
     questionID = db.Column(db.String(120), nullable=False)
     question = db.Column(db.String(200), nullable=False)
     answer = db.Column(db.Text, nullable=False)
@@ -214,6 +215,7 @@ class questions(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "cat": self.cat,
             "questionID": self.questionID,
             "question": self.question,
             "answer": self.answer
