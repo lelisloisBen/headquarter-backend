@@ -666,6 +666,7 @@ def skype_help():
     if request.method == 'POST':
         body = request.get_json()
         answer = body['answer']
+        decodedAnswer = answer.decode('string_escape')
         if 'answer' not in body:
             raise APIException('answer can\'t be empty', status_code=400)
         username = "lelislois@hotmail.fr"
@@ -673,7 +674,7 @@ def skype_help():
         channelID = "19:cdc64ecba74b43efbc9067f58d267102@thread.skype"
         sk = Skype(username,password) 
         channel = sk.chats.chat(channelID) 
-        channel.sendMsg(answer)
+        channel.sendMsg(decodedAnswer)
         return jsonify({
         'msg': 'message sent!'
     })
