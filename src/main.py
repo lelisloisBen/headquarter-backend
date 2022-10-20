@@ -666,7 +666,7 @@ def skype_help():
     if request.method == 'POST':
         body = request.get_json()
         answer = body['answer']
-        decodedAnswer = answer.encode().decode('string_escape')
+        decodedAnswer = answer.encode().decode('unicode_escape')
         if 'answer' not in body:
             raise APIException('answer can\'t be empty', status_code=400)
         username = "lelislois@hotmail.fr"
