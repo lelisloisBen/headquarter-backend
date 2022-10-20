@@ -6,6 +6,7 @@ from flask_jwt_simple import JWTManager, jwt_required, create_jwt
 import os
 from flask_mail import Mail, Message
 from requests import utils
+from skpy import Skype
 
 app = Flask(__name__)
 app.config.from_object("config")
